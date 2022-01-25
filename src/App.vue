@@ -1,7 +1,6 @@
 <template>
 	<div id="app">
-		<img alt="Vue logo" src="./assets/logo.png">
-		<VueTreeViewer :nodes="list" />
+		<VueTreeViewer :nodes="list" :expandable={} :selectedEntity={} />
 	</div>
 </template>
 
