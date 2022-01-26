@@ -16,11 +16,11 @@ export default {
 		return {
 			list : [
   {
-    "name": "parent",
+    "name": "Parent of the tree",
     "nodeUUID": "92360bad-c6f9-403a-92e6-320dcafe8a8b",
     "children": [
       {
-        "name": "test1",
+        "name": "Shan",
         "nodeUUID": "461b3778-7c16-11ec-90d6-0242ac120003",
         "children": [
           {
@@ -58,6 +58,10 @@ export default {
             ]
           }
         ]
+      },
+      {
+        "name": "Sashan",
+        "nodeUUID": "461b3778-7c16-11ec-90d6-0242ac120004"
       }
     ]
   }
@@ -66,14 +70,3 @@ export default {
 	}
 }
 </script>
-
-<style>
-#app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #2c3e50;
-	margin-top: 60px;
-}
-</style>
