@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<VueTreeViewer :nodes="list" :expandable={} :selectedEntity={} />
+		<VueTreeViewer :nodes="list"/>
 	</div>
 </template>
 

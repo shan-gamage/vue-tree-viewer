@@ -63,5 +63,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shan-gamage/vue-tree-viewer.git"
-  }
+  },
+  "keywords": [
+    "vue", "tree view", "hierachical", "vue tree", "tree", "vue-tree", "vue-tree-viewer"
+  ]
 }

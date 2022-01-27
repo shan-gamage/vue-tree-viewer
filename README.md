@@ -11,7 +11,7 @@ npm i vue-tree-viewer
 ```
 <template>
 	<div id="app">
-		<VueTreeViewer :nodes="list" :expandable={} :selectedEntity={} />
+		<VueTreeViewer :nodes="list"/>
 	</div>
 </template>
 

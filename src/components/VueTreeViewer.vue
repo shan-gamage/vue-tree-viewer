@@ -12,12 +12,14 @@
                 class="pointer p-2"
             >
                 <i
-                    class="fa fa-chevron-down transition"
+                    class="arrow right"
                     :class="[isExpanded(node) ? 'rotate-180' : '']"
                 ></i>
             </span>
+            <div class="node-details d-flex align-items-center p-2">
+                <span class="mr-2">{{ node.name }}</span>
+            </div>
         </div>
-            {{ node.name }}
             <div :id="'tree-' + node.nodeUUID">
                 <VueTreeViewer
                     v-if="node.children"
@@ -36,8 +38,18 @@ export default {
 	name: 'VueTreeViewer',
 	props: {
 		nodes: Array,
-        expandable: Object,
-        selectedEntity: Object,
+        expandable: {
+            type: Object,
+            default: function () {
+                return {}
+            }
+        },
+        selectedEntity: {
+            type: Object,
+            default: function () {
+                return {}
+            }
+        },
         depth: {
             type: Number,
             default: 0,
@@ -80,11 +92,11 @@ export default {
                 if (node.children.length > 0) {
                     if (!this.isNodeExpandable(node)) {
                         this.expanded[node.nodeUUID] = node;
-                        window.$("#field-" + node.nodeUUID).removeClass('node-collapsed');
-                        window.$("#tree-" + node.nodeUUID).slideDown();
+                        // window.$("#field-" + node.nodeUUID).removeClass('node-collapsed');
+                        // window.$("#tree-" + node.nodeUUID).slideDown();
                     } else {
-                        window.$("#field-" + node.nodeUUID).addClass('node-collapsed');
-                        window.$("#tree-" + node.nodeUUID).slideUp();
+                        // window.$("#field-" + node.nodeUUID).addClass('node-collapsed');
+                        // window.$("#tree-" + node.nodeUUID).slideUp();
                         delete this.expanded[node.nodeUUID];
                     }
                 }
@@ -118,3 +130,23 @@ export default {
     // }
 }
 </script>
+<style>
+    .arrow {
+      border: solid black;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+    }
+
+    .right {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+    .d-flex {
+        display: -ms-flexbox!important;
+        display: flex!important;
+    }
+    .p-2 {
+        padding: 0.5rem!important;
+    }
+</style>
