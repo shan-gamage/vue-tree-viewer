@@ -6,28 +6,29 @@
             :style="{ 'margin-left': `${depth * 30}px` }"
             class="node"
         >
-        <div :id="'field-' + node.nodeUUID" class="d-flex mx-2 mt-2 align-items-center">
-            <span
-                @click="nodeClicked(node)"
-                class="pointer p-2"
-            >
-                <i
-                    class="arrow right"
-                    :class="[isExpanded(node) ? 'rotate-180' : '']"
-                ></i>
-            </span>
-            <div class="node-details d-flex align-items-center p-2">
-                <span class="mr-2">{{ node.name }}</span>
+            <div :id="'field-' + node.nodeUUID" class="d-flex mx-2 mt-2 align-items-center">
+                <span
+                    @click="nodeClicked(node)"
+                    class="pointer p-2 d-flex align-items-center"
+                >
+                    <i
+                        class="transition"
+                        :class="[isExpanded(node) ? 'rotate-180' : '', node.children && node.children.length > 0? 'arrow': 'circle']"
+                    ></i>
+                </span>
+                <div class="node-details d-flex align-items-center p-2">
+                    <span class="mr-2">{{ node.name }}</span>
+                </div>
             </div>
-        </div>
             <div :id="'tree-' + node.nodeUUID">
                 <VueTreeViewer
-                    v-if="node.children"
+                    v-if="isExpanded(node) && node.children"
                     :nodes="node.children"
                     :expandable="expanded"
                     :selectedEntity="selectedEntity"
                     :depth="1"
-                />
+                    @onClick="(node) => $emit('onClick', node)"
+                ></VueTreeViewer>
             </div>
         </div>
     </div>
@@ -60,7 +61,7 @@ export default {
         expanded: this.expandable,
         selectedNode: Object,
         sortedNodes: [],
-        doSort: false
+        doSort: true
 		};
 	},
 	created() {
@@ -92,11 +93,11 @@ export default {
                 if (node.children.length > 0) {
                     if (!this.isNodeExpandable(node)) {
                         this.expanded[node.nodeUUID] = node;
-                        // window.$("#field-" + node.nodeUUID).removeClass('node-collapsed');
-                        // window.$("#tree-" + node.nodeUUID).slideDown();
+                        window.$("#field-" + node.nodeUUID).removeClass('node-collapsed');
+                        window.$("#tree-" + node.nodeUUID).slideDown();
                     } else {
-                        // window.$("#field-" + node.nodeUUID).addClass('node-collapsed');
-                        // window.$("#tree-" + node.nodeUUID).slideUp();
+                        window.$("#field-" + node.nodeUUID).addClass('node-collapsed');
+                        window.$("#tree-" + node.nodeUUID).slideUp();
                         delete this.expanded[node.nodeUUID];
                     }
                 }
@@ -120,33 +121,7 @@ export default {
                 return false;
             }
         },
-	},
-    // directives: {
-    //     visible: {
-    //         bind: function (el, binding) {
-    //             el.style.visibility = !!binding.value ? 'visible' : 'hidden';
-    //         }
-    //     }
-    // }
+	}
 }
 </script>
-<style>
-    .arrow {
-      border: solid black;
-      border-width: 0 3px 3px 0;
-      display: inline-block;
-      padding: 3px;
-    }
 
-    .right {
-      transform: rotate(-45deg);
-      -webkit-transform: rotate(-45deg);
-    }
-    .d-flex {
-        display: -ms-flexbox!important;
-        display: flex!important;
-    }
-    .p-2 {
-        padding: 0.5rem!important;
-    }
-</style>

@@ -3,9 +3,11 @@
 		<VueTreeViewer :nodes="list"/>
 	</div>
 </template>
-
 <script>
 import VueTreeViewer from './components/VueTreeViewer.vue'
+import './style.css';
+import $ from "jquery";
+window.$ = $;
 
 export default {
 	name:'App',
