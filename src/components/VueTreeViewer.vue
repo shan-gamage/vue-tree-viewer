@@ -93,11 +93,19 @@ export default {
                 if (node.children.length > 0) {
                     if (!this.isNodeExpandable(node)) {
                         this.expanded[node.nodeUUID] = node;
-                        window.$("#field-" + node.nodeUUID).removeClass('node-collapsed');
-                        window.$("#tree-" + node.nodeUUID).slideDown();
+                        document.getElementById("field-" + node.nodeUUID).classList.remove("node-collapsed")
+                        // window.$("#field-" + node.nodeUUID).removeClass('');
+                        // window.$("#tree-" + node.nodeUUID).slideDown();
+                        
+                        document.getElementById("tree-" + node.nodeUUID).style.transition = "all .3s ease-in-out";
+                        document.getElementById("tree-" + node.nodeUUID).style.display = "block";
                     } else {
-                        window.$("#field-" + node.nodeUUID).addClass('node-collapsed');
-                        window.$("#tree-" + node.nodeUUID).slideUp();
+                        document.getElementById("field-" + node.nodeUUID).classList.add("node-collapsed")
+                        
+                        document.getElementById("tree-" + node.nodeUUID).style.transition = "all .3s ease-in-out";
+                        document.getElementById("tree-" + node.nodeUUID).style.display = "none";
+                        // window.$("#field-" + node.nodeUUID).addClass('node-collapsed');
+                        // window.$("#tree-" + node.nodeUUID).slideUp();
                         delete this.expanded[node.nodeUUID];
                     }
                 }

@@ -5,9 +5,7 @@
 </template>
 <script>
 import VueTreeViewer from './components/VueTreeViewer.vue'
-import './style.css';
-import $ from "jquery";
-window.$ = $;
+import './assets/css/style.css';
 
 export default {
 	name:'App',
@@ -26,33 +24,33 @@ export default {
         "nodeUUID": "461b3778-7c16-11ec-90d6-0242ac120003",
         "children": [
           {
-            "name": "test2",
+            "name": "child node 2",
             "nodeUUID": "461b39bc-7c16-11ec-90d6-0242ac120003"
           },
           {
-            "name": "test3",
+            "name": "child node 3",
             "nodeUUID": "461b3af2-7c16-11ec-90d6-0242ac120003",
             "children": [
               {
-                "name": "test5",
+                "name": "child node 4",
                 "nodeUUID": "461b3c14-7c16-11ec-90d6-0242ac120003"
               }
             ]
           },
           {
-            "name": "test3",
+            "name": "child node 1",
             "nodeUUID": "461b3d22-7c16-11ec-90d6-0242ac120003"
           },
           {
-            "name": "test4",
+            "name": "child node 5",
             "nodeUUID": "461b3fde-7c16-11ec-90d6-0242ac120003",
             "children": [
               {
-                "name": "test6",
+                "name": "child node 6",
                 "nodeUUID": "461b4100-7c16-11ec-90d6-0242ac120003",
                 "children": [
                   {
-                    "name": "test7",
+                    "name": "child node 7",
                     "nodeUUID": "461b4254-7c16-11ec-90d6-0242ac120003"
                   }
                 ]
