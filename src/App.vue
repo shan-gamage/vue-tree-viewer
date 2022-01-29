@@ -5,7 +5,6 @@
 </template>
 <script>
 import VueTreeViewer from './components/VueTreeViewer.vue'
-import './assets/css/style.css';
 
 export default {
 	name:'App',

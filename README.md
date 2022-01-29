@@ -21,6 +21,7 @@ npm i vue-tree-viewer
 
 <script>
 	import VueTreeViewer from 'vue-tree-viewer'
+	import "vue-tree-viewer/dist/vue-tree-viewer.css";
 
 	export default {
 	  name:'App',

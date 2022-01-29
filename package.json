@@ -1,6 +1,6 @@
 {
   "name": "vue-tree-viewer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "description": "build npm package for vue tree structure",
   "author": {
@@ -19,7 +19,8 @@
     "src/*",
     "public/*",
     "*.json",
-    "*.js"
+    "*.js",
+    "*.css"
   ],
   "dependencies": {
     "core-js": "^3.6.5",
@@ -53,7 +54,7 @@
     "last 2 versions",
     "not dead"
   ],
-  "_id": "vue-tree-viewer@1.0.0",
+  "_id": "vue-tree-viewer@1.0.2",
   "bugs": {
     "url": "https://github.com/shan-gamage/vue-tree-viewer/issues"
   },
