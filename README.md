@@ -1,12 +1,12 @@
 # vue-tree-viewer
 
-Render a hierachical content as tree strucutre bease on the tree JSon
+Render a hierarchical content as tree structure base on the tree JSon
 
 ## Project setup
 ```
 npm i vue-tree-viewer
 ```
-###Features
+### Features
 - **Generate the hierachical tree strucutre according to the provided JSON array**
 - **Make expandable view for parent and children node**
 
