@@ -2,11 +2,11 @@
     <div>
         <div
             v-for="node in sortedNodes"
-            :key="node.nodeUUID"
+            :key="node.id"
             :style="{ 'margin-left': `${depth * 30}px` }"
             class="node"
         >
-            <div :id="'field-' + node.nodeUUID" class="d-flex mx-2 mt-2 align-items-center">
+            <div :id="'field-' + node.id" class="d-flex mx-2 mt-2 align-items-center">
                 <span
                     @click="nodeClicked(node)"
                     class="pointer p-2 d-flex align-items-center"
@@ -20,7 +20,7 @@
                     <span class="mr-2">{{ node.name }}</span>
                 </div>
             </div>
-            <div :id="'tree-' + node.nodeUUID">
+            <div :id="'tree-' + node.id">
                 <VueTreeViewer
                     v-if="isExpanded(node) && node.children"
                     :nodes="node.children"
@@ -92,35 +92,35 @@ export default {
             if ("children" in node) {
                 if (node.children.length > 0) {
                     if (!this.isNodeExpandable(node)) {
-                        this.expanded[node.nodeUUID] = node;
-                        document.getElementById("field-" + node.nodeUUID).classList.remove("node-collapsed")
-                        // window.$("#field-" + node.nodeUUID).removeClass('');
-                        // window.$("#tree-" + node.nodeUUID).slideDown();
+                        this.expanded[node.id] = node;
+                        document.getElementById("field-" + node.id).classList.remove("node-collapsed")
+                        // window.$("#field-" + node.id).removeClass('');
+                        // window.$("#tree-" + node.id).slideDown();
                         
-                        document.getElementById("tree-" + node.nodeUUID).style.transition = "all .3s ease-in-out";
-                        document.getElementById("tree-" + node.nodeUUID).style.display = "block";
+                        document.getElementById("tree-" + node.id).style.transition = "all .3s ease-in-out";
+                        document.getElementById("tree-" + node.id).style.display = "block";
                     } else {
-                        document.getElementById("field-" + node.nodeUUID).classList.add("node-collapsed")
+                        document.getElementById("field-" + node.id).classList.add("node-collapsed")
                         
-                        document.getElementById("tree-" + node.nodeUUID).style.transition = "all .3s ease-in-out";
-                        document.getElementById("tree-" + node.nodeUUID).style.display = "none";
-                        // window.$("#field-" + node.nodeUUID).addClass('node-collapsed');
-                        // window.$("#tree-" + node.nodeUUID).slideUp();
-                        delete this.expanded[node.nodeUUID];
+                        document.getElementById("tree-" + node.id).style.transition = "all .3s ease-in-out";
+                        document.getElementById("tree-" + node.id).style.display = "none";
+                        // window.$("#field-" + node.id).addClass('node-collapsed');
+                        // window.$("#tree-" + node.id).slideUp();
+                        delete this.expanded[node.id];
                     }
                 }
             }
         },
         isNodeExpandable(node) {
-            return ((node.nodeUUID in this.expanded));
+            return ((node.id in this.expanded));
         },
         isExpanded(node) {
-            if (!(node.nodeUUID in this.selectedEntity)) {
-                this.selectedEntity[node.nodeUUID] = false;
+            if (!(node.id in this.selectedEntity)) {
+                this.selectedEntity[node.id] = false;
             }
             if ("children" in node) {
                 if (node.children.length > 0) {
-                    this.expanded[node.nodeUUID] = node;
+                    this.expanded[node.id] = node;
                     return true;
                 } else {
                     return false;
