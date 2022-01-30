@@ -16,7 +16,7 @@
                         :class="[isExpanded(node) ? 'rotate-180' : '', node.children && node.children.length > 0? 'arrow': 'circle']"
                     ></i>
                 </span>
-                <div class="node-details d-flex align-items-center p-2">
+                <div class="node-details d-flex align-items-center p-2" @click="nodeClickedAction($event, node)">
                     <span class="mr-2">{{ node.name }}</span>
                 </div>
             </div>
@@ -27,7 +27,6 @@
                     :expandable="expanded"
                     :selectedEntity="selectedEntity"
                     :depth="1"
-                    @onClick="(node) => $emit('onClick', node)"
                 ></VueTreeViewer>
             </div>
         </div>
@@ -40,6 +39,7 @@ export default {
 	name: 'VueTreeViewer',
 	props: {
 		nodes: Array,
+        callbackFunction: Function,
         expandable: {
             type: Object,
             default: function () {
@@ -60,6 +60,7 @@ export default {
 	data() {
 		return {
         expanded: this.expandable,
+        parentFucntion: this.callbackFunction? this.callbackFunction: null,
         selectedNode: Object,
         sortedNodes: [],
         doSort: true
@@ -95,9 +96,6 @@ export default {
                     if (!this.isNodeExpandable(node)) {
                         this.expanded[node.id] = node;
                         document.getElementById("field-" + node.id).classList.remove("node-collapsed")
-                        // window.$("#field-" + node.id).removeClass('');
-                        // window.$("#tree-" + node.id).slideDown();
-                        
                         document.getElementById("tree-" + node.id).style.transition = "all .3s ease-in-out";
                         document.getElementById("tree-" + node.id).style.display = "block";
                     } else {
@@ -130,6 +128,18 @@ export default {
                 return false;
             }
         },
+        nodeClickedAction(event, node, thisObject) {
+            var that = thisObject? thisObject : this;
+            if(that.$parent.vueTreeParentCallback) {
+                this.nodeClickedAction(event, node, that.$parent);
+            } else {
+                this.vueTreeParentCallback({event, node}, that);
+                
+            }
+        },
+        vueTreeParentCallback(emitObject, that) {
+            that.parentFucntion(emitObject)
+        }
 	}
 }
 </script>

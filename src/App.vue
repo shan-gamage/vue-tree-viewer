@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<VueTreeViewer :nodes="list"/>
+		<VueTreeViewer :nodes="list" :callbackFunction="customHandler" />
 	</div>
 </template>
 <script>
@@ -66,6 +66,13 @@ export default {
   }
 ]
 		}
-	}
+	},
+  methods: {
+    customHandler(emitObject) {
+      // Our event handler gets the event, as well as any
+      // arguments the child passes to the event
+      console.log('From the child ', emitObject);
+    }
+  }
 }
 </script>
