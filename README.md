@@ -93,11 +93,12 @@ npm i vue-tree-viewer
   }
 </script>
 ```
-##### TreeNode Props
-|   prop | Mandatory |  Type |   Default|   Description|
-| ------------ | ------------ | ------------ | ------------ |
+
+
+|   prop| Mandatory |  Type |   Default|   Description|
+| ------------ | ------------ | ------------ | ------------ | ------------ |
 |   nodes| yes | JSon Array |  - |  Tree Jso |
-|   callbackFunction| No |Function |  - |  Provide your callback function name |
+|   callbackFunction| No |Function |  - |  Provide your callback function name|
 
 Data need should be JSON array
 
