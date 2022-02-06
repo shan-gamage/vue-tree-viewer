@@ -138,7 +138,9 @@ export default {
             }
         },
         vueTreeParentCallback(emitObject, that) {
-            that.parentFucntion(emitObject)
+            if(that.parentFucntion !== null) {
+                that.parentFucntion(emitObject)
+            }
         }
 	}
 }

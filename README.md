@@ -9,28 +9,29 @@ npm i vue-tree-viewer
 ### Features
 - **Generate the hierachical tree strucutre according to the provided JSON array**
 - **Make expandable view for parent and children node**
+- **Callback function for node onclick which provide clicked node object and event **
 
 #### Usage
 ```
 <template>
-	<div id="app">
-		<VueTreeViewer :nodes="list"/>
-	</div>
+  <div id="app">
+    <VueTreeViewer :nodes="list" :callbackFunction="customHandler" />
+  </div>
 </template>
 
 
 <script>
-	import VueTreeViewer from 'vue-tree-viewer'
-	import "vue-tree-viewer/dist/vue-tree-viewer.css";
+  import VueTreeViewer from 'vue-tree-viewer'
+  import "vue-tree-viewer/dist/vue-tree-viewer.css";
 
-	export default {
-	  name:'App',
-	  components: {
-	    VueTreeViewer
-	  },
-	  data() {
-	    return {
-	      list : [
+  export default {
+    name:'App',
+    components: {
+      VueTreeViewer
+    },
+    data() {
+      return {
+        list : [
   {
     "name": "Parent of the tree",
     "id": "92360bad-c6f9-403a-92e6-320dcafe8a8b",
@@ -82,12 +83,21 @@ npm i vue-tree-viewer
     ]
   }
 ]
-	    }
-	  }
-	}
+      }
+    },
+  methods: {
+    customHandler(emitObject) {
+      // This emithObject has the even and the clicked node object
+    }
+  }
+  }
 </script>
 ```
 ##### TreeNode Props
+|   prop | Mandatory |  Type |   Default|   Description|
+| ------------ | ------------ | ------------ | ------------ |
+|   nodes| yes | JSon Array |  - |  Tree Jso |
+|   callbackFunction| No |Function |  - |  Provide your callback function name |
 
 Data need should be JSON array
 
