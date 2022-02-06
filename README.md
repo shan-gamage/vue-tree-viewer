@@ -9,8 +9,7 @@ npm i vue-tree-viewer
 ### Features
 - **Generate the hierachical tree strucutre according to the provided JSON array**
 - **Make expandable view for parent and children node**
-- **Callback function for node onclick which provide clicked node object and event **
-
+- **Callback function for node onclick which provide clicked node object and event**
 #### Usage
 ```
 <template>
